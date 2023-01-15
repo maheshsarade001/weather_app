@@ -33,10 +33,10 @@ function App() {
           </form>
         </div>
         <div className='outputBox'>
-          <div>
+          <div className='row_one'>
             <h1>{convertBlankIntoDash(data.name)}</h1>
           </div>
-          <div>
+          <div className='row_two'>
             <div>
               <h2>Current Temp</h2>
               <span>{convertBlankIntoDash(data.main && ((data.main?.temp - 275)).toFixed(2))}&#8451;</span>
@@ -50,15 +50,17 @@ function App() {
               <span>{convertBlankIntoDash(data.main?.pressure)} hPA </span>
             </div>
           </div>
-          <div>
+          <div className='row_three'>
             <h2>Weather</h2>
-            <span>{convertBlankIntoDash(data.weather && data.weather[0]?.main)}</span>
-            <img src={`https://openweathermap.org/img/wn/${data.weather && data.weather[0].icon}.png`} alt="" />
-            <span>{convertBlankIntoDash(data.weather && data.weather[0]?.description)}</span>
+            <div className='weather_details'>
+              <span>{convertBlankIntoDash(data.weather && data.weather[0]?.main)}</span>
+              <img src={`https://openweathermap.org/img/wn/${data.weather && data.weather[0].icon}.png`} alt="" />
+              <span>{convertBlankIntoDash(data.weather && data.weather[0]?.description)}</span>
+            </div>
           </div>
-          <div>
+          <div className='row_five'>
             <span>{convertBlankIntoDash(data.sys?.sunrise && new Date(data.sys?.sunrise * 1000).toLocaleString())}</span>
-            {console.log(new Date(data.sys?.sunrise * 1000))}
+            <span>{convertBlankIntoDash(data.sys?.sunset && new Date(data.sys?.sunset * 1000).toLocaleString())}</span>
           </div>
         </div>
       </div >
