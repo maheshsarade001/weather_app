@@ -49,11 +49,11 @@
 
 .row_two {
   display: flex;
-  justify-content: space-between;
+  justify-content: space-evenly;
 }
 
 
 .weather_details {
   display: flex;
-  justify-content: space-between;
+  justify-content: space-evenly;
 }
