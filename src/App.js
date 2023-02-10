@@ -11,12 +11,17 @@ function App() {
 
   const handleSubmit = (event) => {
     event.preventDefault()
+    if (city) {
 
-    axios.get(`https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${API}`)
-      .then((response) => {
-        setData(response.data)
-        console.log(data)
-      })
+
+      axios.get(`https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${API}`)
+        .then((response) => {
+          setData(response.data)
+          console.log(data)
+        })
+    } else {
+      alert("Please enter a city name")
+    }
   }
 
 
@@ -56,7 +61,9 @@ function App() {
               <div className='box'>
                 <span>{convertBlankIntoDash(data.weather && data.weather[0]?.main)}</span>
               </div>
-              <img src={`https://openweathermap.org/img/wn/${data.weather && data.weather[0].icon}.png`} alt="" />
+              <div className='weather_img'>
+                <img src={`https://openweathermap.org/img/wn/${data.weather && data.weather[0].icon}.png`} alt="" />
+              </div>
               <div className='box'>
                 <span>{convertBlankIntoDash(data.weather && data.weather[0]?.description)}</span>
               </div>
